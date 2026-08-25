@@ -80,3 +80,22 @@ uint32_t PDT_String_strlen(String* string, uint32_t* length)
 
     return 0;
 }
+
+uint32_t PDT_String_strcpy(String *src, String *dst)
+{
+    if (src == NULL || dst == NULL)
+    {
+        return -1;
+    }
+
+    dst->bytes = malloc(src->length);
+
+    for (int charIndex = 0; charIndex < src->length; charIndex++)
+    {
+        dst->bytes[charIndex] = src->bytes[charIndex];
+    }
+
+    dst->length = src->length;
+
+    return 0;
+}

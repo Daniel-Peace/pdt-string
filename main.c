@@ -1,41 +1,20 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "./src/pdt_string.h"
 #include "./src/pdt_string.c"
 
+uint32_t test_createFromNullTerminated();
+
+uint32_t test_create();
+
 int main() 
 {
-    char* myString1 = "Hello";
+    uint32_t error = 0;
 
-    String string1;
+    error = test_createFromNullTerminated();
 
-    uint32_t error = PDT_String_createFromNullTerminated(myString1, &string1);
-
-    if (error != 0)
-    {
-        printf("[-] ERROR - Something went wrong while creating a string...");
-
-        exit(1);
-    }
-
-    printf("String 1 Length: %d\n", string1.length);
-
-    printf("String 1 bytes: %s\n", string1.bytes);
-
-    char* myString2 = malloc(sizeof(char) * 5);
-
-    for (int i = 0; i < 5; i++)
-    {
-        myString2[i] = myString1[i];
-    }
-
-    String string2;
-
-    PDT_String_create(myString2, 5, &string2);
-
-    printf("String 2 Length: %d\n", string2.length);
-
-    printf("String 2 bytes: %s\n", string2.bytes);
+    error = test_create();
 
     String string3;
 
@@ -55,4 +34,59 @@ int main()
     error = PDT_String_toNullTerminated(&string3, &result);
 
     printf("String: %s", result);
+}
+
+uint32_t test_createFromNullTerminated()
+{
+    printf("[-] ---\n");
+
+    printf("[-] Testing \"createFromNullTerminated\"\n");
+
+    char* srcChars = "Hello";
+
+    String dstString;
+
+    uint32_t error = PDT_String_createFromNullTerminated(srcChars, &dstString);
+
+    if (error != 0)
+    {
+        return -1;
+    }
+
+    printf("[-] Length: %d\n", dstString.length);
+
+    printf("[-] Bytes: %s\n", dstString.bytes);
+
+    return 0;
+}
+
+uint32_t test_create()
+{
+    printf("[-] ---\n");
+
+    printf("[-] Testing \"create\"\n");
+
+    char* srcChars = "Hello";
+
+    char* srcCharsNoNull = malloc(sizeof(char) * 5);
+
+    for (int i = 0; i < 5; i++)
+    {
+        srcCharsNoNull[i] = srcChars[i];
+    }
+
+    String string2;
+
+    uint32_t error = PDT_String_create(srcCharsNoNull, 5, &string2);
+
+    if (error != 0)
+    {
+        return -1;
+    }
+
+    printf("[-] Length: %d\n", string2.length);
+
+    printf("[-] Bytes: %s\n", string2.bytes);
+
+    return 0;
 }
