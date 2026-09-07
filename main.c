@@ -16,7 +16,7 @@ int main()
 
     error = test_create();
 
-    String string3;
+    PDT_String string3;
 
     char* myString3 = "My String";
 
@@ -44,7 +44,7 @@ uint32_t test_createFromNullTerminated()
 
     char* srcChars = "Hello";
 
-    String dstString;
+    PDT_String dstString;
 
     uint32_t error = PDT_String_createFromNullTerminated(srcChars, &dstString);
 
@@ -75,7 +75,7 @@ uint32_t test_create()
         srcCharsNoNull[i] = srcChars[i];
     }
 
-    String string2;
+    PDT_String string2;
 
     uint32_t error = PDT_String_create(srcCharsNoNull, 5, &string2);
 

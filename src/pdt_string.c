@@ -1,8 +1,7 @@
 #include "pdt_string.h"
-#include <stdint.h>
 #include <stdlib.h>
 
-uint32_t PDT_String_create(char* bytes, uint32_t length, String* string) 
+uint32_t PDT_String_create(char* bytes, uint32_t length, PDT_String* string) 
 {
     if (length > MAX_STRING_LENGTH)
     {
@@ -21,7 +20,7 @@ uint32_t PDT_String_create(char* bytes, uint32_t length, String* string)
     return 0;
 }
 
-uint32_t PDT_String_createFromNullTerminated(char* bytes, String* string) 
+uint32_t PDT_String_createFromNullTerminated(char* bytes, PDT_String* string) 
 {
     if (string == NULL)
     {
@@ -59,7 +58,7 @@ uint32_t PDT_String_createFromNullTerminated(char* bytes, String* string)
 }
 
 
-uint32_t PDT_String_toNullTerminated(String* src, char** dst)
+uint32_t PDT_String_toNullTerminated(PDT_String* src, char** dst)
 {
     (*dst) = malloc(sizeof(char) * src->length);
 
@@ -74,14 +73,14 @@ uint32_t PDT_String_toNullTerminated(String* src, char** dst)
 }
 
 
-uint32_t PDT_String_strlen(String* string, uint32_t* length)
+uint32_t PDT_String_strlen(PDT_String* string, uint32_t* length)
 {
     (*length) = string->length;
 
     return 0;
 }
 
-uint32_t PDT_String_strcpy(String *src, String *dst)
+uint32_t PDT_String_strcpy(PDT_String *src, PDT_String *dst)
 {
     if (src == NULL || dst == NULL)
     {
