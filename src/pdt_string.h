@@ -1,5 +1,5 @@
-#ifndef PDT_STRING
-#define PDT_STRING
+#ifndef PDT_STRING_HEADER
+#define PDT_STRING_HEADER
 
 #include <stdint.h>
 
