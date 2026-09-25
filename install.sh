@@ -10,8 +10,8 @@ else
     exit 1
 fi
 
-echo "[-] Copying header file to .local/include/pdt/"
-cp ./src/pdt_string.h $HOME/.local/include/pdt/
+echo "[-] Copying header file to .local/include/"
+cp ./src/pdt_string.h $HOME/.local/include/
 if [ $? -eq 0 ]; then
     echo "[-] Successfully copied header file..."
 else
