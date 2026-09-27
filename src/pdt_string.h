@@ -34,8 +34,7 @@
 #include <stdint.h>
 
 /**
- * The maximum length, or number of characters, a that a
- * string can be.
+ * The maximum length a string can be.
  */
 #define MAX_STRING_LENGTH 255
 
@@ -44,9 +43,10 @@
  * well as that array's length. It should be noted that
  * PDT_String treats everything.
  */
-typedef struct {
-    char* bytes;
-    uint32_t length;
+typedef struct
+{
+    char*       bytes;
+    uint32_t    length;
 } PDT_String;
 
 /**
@@ -59,7 +59,7 @@ uint32_t PDT_String_create(char* src, uint32_t length, PDT_String* dst);
  * Creates a PDT_String from a given null-terminated char
  * buffer.
  */
-uint32_t PDT_String_createFromNullTerminated(char* src, PDT_String* dst);
+uint32_t PDT_String_createFromNullTerminated(const char* src, PDT_String* dst);
 
 /**
  * Converts the given "PDT_String" to null-terminated char

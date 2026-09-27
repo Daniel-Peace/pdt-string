@@ -50,7 +50,9 @@ uint32_t PDT_String_create(char* bytes, uint32_t length, PDT_String* string)
     return 0;
 }
 
-uint32_t PDT_String_createFromNullTerminated(char* bytes, PDT_String* string)
+uint32_t PDT_String_createFromNullTerminated(
+    const char* bytes,
+    PDT_String* string)
 {
     if (string == NULL)
     {
@@ -59,7 +61,7 @@ uint32_t PDT_String_createFromNullTerminated(char* bytes, PDT_String* string)
 
     uint32_t length = 0;
 
-    char* currentbyte = bytes;
+    const char* currentbyte = bytes;
 
     while (*currentbyte != '\0')
     {
